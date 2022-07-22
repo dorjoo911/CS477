@@ -10,4 +10,6 @@ http
   .createServer((req, res) => {
     res.end(fs.readFileSync("card.jpg"));
   })
-  .listen(3000);
+  .listen(3001, () => {
+    console.log(`localhost:3001 running ...`);
+  });
