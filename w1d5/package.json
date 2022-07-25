@@ -1,0 +1,15 @@
+{
+  "name": "w1d5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "httpServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon httpServer.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
