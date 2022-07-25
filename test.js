@@ -1,49 +1,18 @@
-const fs = require("fs");
+/*
+User makes a request to http://localhost:8080/, the browser displays a page with a signup form which has two inputs: firstname and lastname, and 1 submit button.
+When user clicks submit button in the browser, browser makes a POST request to http://localhost:8080/signup URL. On the server side, the web application gets user’s 
+the inputs(firstname and lastname), then stored in the database.txt file, should append not replace.
+If firstname or lastname is empty, goes back to signup form with error message: "Firstname and lastname are required".
+If stored successfully, display “saved successfully” message in the browser.
+If stored failed, throw error with message “saved failed”.
+For all other URLs accessed to this website, show "URL doesn't exists, try again".
+If there's error happens on the server side, display error message in the browser.
 
-var options = {
-  key: fs.readFileSync("./privateKey.key"),
-  cert: fs.readFileSync("./certificate.crt"),
-};
+When you store user's info, The format of database.txt file looks like below:
 
-const server = require("https").createServer(options);
+john=smith,Bella=Lord,Edward=Hopkin */
+const express = require("express");
 
-server.on("request", (req, res) => {
-  // console.log(req.url, req.method, req.headers);
-  const url = req.url;
-  const method = req.method;
+const path = require("path");
 
-  if (url === "/") {
-    res.write("<html>");
-    res.write("<head><title>Enter Message</title></head>");
-    res.write(
-      '<body><form action="/messsage" method="POST">Enter Message: <input name="message"><button type="submit">Send</button></form></body>'
-    );
-    res.write("</html>");
-    return res.end(); // "retrun" here exits the function execution, otherwise continue.
-  }
-
-  if (url === "/messsage" && method === "POST") {
-    const body = [];
-    req.on("data", (chunk) => {
-      body.push(chunk);
-    });
-    req.on("end", () => {
-      const parsedBody = Buffer.concat(body).toString();
-      console.log(parsedBody);
-      fs.writeFileSync("message.txt", parsedBody.split("=")[1]);
-    });
-
-    res.statusCode = 302;
-    res.setHeader("Location", "/");
-    return res.end();
-  }
-
-  res.setHeader("Content-Type", "text/html");
-  res.write("<html>");
-  res.write("<head><title>My First Page</title></head>");
-  res.write("<body><h1>Hellow from Node.js</h1></body>");
-  res.write("</html>");
-  res.end();
-});
-
-server.listen(443);
+const app = express();
