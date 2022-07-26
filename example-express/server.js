@@ -11,24 +11,46 @@ const path = require("path");
 
 const app = express();
 
-app.get("/user", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "users.html"));
 });
 
 app.post("/product", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "product.html"));
+  const body = [];
+  req.on("data", (chunk) => {
+    body.push(chunk);
+  });
+  req.on("end", () => {
+    const str = Buffer.concat(body).toString();
+    let name = str.split("&")[0].split("=")[1];
+    res.sendFile(path.join(__dirname, "views", "product.html"));
+    res.send(`
+    <h1>Welcome ${name}</h1>
+    <form action="/saved" method="post">      
+      <input type="text" id="pro1" name="product" /><br />      
+      <input type="text" id="price" name="price" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    `);
+  });
 });
 
-app.get("/saved", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "saved.html"));
+app.post("/saved", (req, res) => {
+  // res.sendFile(path.join(__dirname, "views", "saved.html"));
+  let html = fs.readFileSync(
+    path.join(__dirname, "views", "saved.html"),
+    "utf8"
+  );
+  res.send((html = html.replace("{mastehgtdh}", "Good job . !!!")));
 });
 
 app.use("/mycss", express.static(path.join(__dirname)));
 
+app.use((req, res, next) => {
+  res.status(404).send("<h1>something is wrong ...!!!</h1>");
+});
+
 app.use((err, req, res, next) => {
-  console.log(err);
-  if ((err.code = "edit")) {
-  }
   res.status(500).send(err.message);
 });
 
