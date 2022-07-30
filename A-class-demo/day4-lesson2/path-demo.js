@@ -1,5 +1,5 @@
-const { dir } = require('console');
-const path = require('path');
+const { dir } = require("console");
+const path = require("path");
 
 // const dir1 = path.dirname('global');
 // console.log(dir1);
@@ -9,5 +9,5 @@ const path = require('path');
 // const dir2 = path.dirname(__filename);
 // console.log(dir2);
 
-const loc = path.join('..', '.', 'public', 'resources', 'index.css');
+const loc = path.join("..", ".", "public", "resources", "index.css");
 console.log(loc);
