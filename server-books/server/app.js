@@ -3,6 +3,7 @@ const cors = require("cors");
 
 const productRouter = require("./routes/productRouter");
 const bookRouter = require("./routes/bookRouter");
+const { mongoConnect } = require("./utils/database");
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use((req, res, next) => {
   res.status(404).send({ error: "API NOT SUPPORTED" });
 });
 
-app.listen(3000, () => {
-  console.log("SERVER RUNNING SUCCESSFULLY ... ON PORT: 3000 !!!!");
+mongoConnect(() => {
+  app.listen(3000);
+  console.log("SERVER SUCCESSFULLY CONNECTED DATABASE ON PORT: 3000 !!!!");
 });

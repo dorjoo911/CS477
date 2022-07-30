@@ -1,86 +1,44 @@
-let books = [
-  {
-    id: 1,
-    title: "The Java",
-    ISBN: 8452,
-    publishedDate: "2020-10-02",
-    author: "Mike Erdene",
-  },
-  {
-    id: 2,
-    title: "Blue Book",
-    ISBN: 6415,
-    publishedDate: "2021-10-02",
-    author: "Mike Erdene",
-  },
-  {
-    id: 3,
-    title: "Best book",
-    ISBN: 3216,
-    publishedDate: "2022-10-02",
-    author: "Mike Erdene",
-  },
-];
-let counter = 4;
+const { getDB } = require("../utils/database");
+const { ObjectId } = require("mongodb");
 
 module.exports = class Book {
   constructor(id, title, ISBN, publishedDate, author) {
-    this.id = id;
+    this._id = id;
     this.title = title;
     this.ISBN = ISBN;
-    this.publishedDate = publishedDate;
+    this.publishedDate = new Date();
     this.author = author;
   }
 
   static allBook() {
-    return books;
+    return getDB().collection("books").find().toArray();
   }
 
   addBook() {
-    this.id = counter++;
-    books.push(this);
-    return this;
+    return getDB().collection("books").insertOne(this);
   }
 
   static getBook(id) {
-    const index = books.findIndex((book) => book.id == id);
-    if (index < -1) {
-      throw new Error(`NO PRODUCT FOUND with ID: ${id}`);
-    } else {
-      return books[index]; // books[id]
-    }
+    return getDB()
+      .collection("books")
+      .findOne({ _id: new ObjectId(id) });
   }
 
-  static updateBook(id) {
-    const book = books.find((book) => book.id == id);
-    if (book) {
-      book.title = title;
-      book.ISBN = ISBN;
-      book.publishedDate = publishedDate;
-      book.author = author;
-      return book;
-    } else {
-      throw new Error(`NO PRODUCT FOUND with ID: ${id}`);
-    }
+  update() {
+    // return getDB().collection('books')
+    //     .updateOne({_id: new ObjectId(this._id)},
+    //         {$set: {title: this.title, ISBN: this.ISBN, publishedDate: this.publishedDate, author: this.author}});
+    const self = Object.assign({}, this);
+    delete self._id;
+
+    return getDB()
+      .collection("books")
+      .updateOne({ _id: new ObjectId(this._id) }, { $set: self });
   }
 
-  update(id) {
-    const index = books.findIndex((book) => book.id == this.id);
-    if (index < -1) {
-      throw new Error(`NO PRODUCT FOUND with ID: ${id}`);
-    } else {
-      books[index]; // books[id]
-      return this;
-    }
-  }
   static deleteBook(id) {
-    const index = books.findIndex((book) => book.id == id);
-    if (index < -1) {
-      throw new Error(`NO PRODUCT FOUND with ID: ${id}`);
-    } else {
-      let book = books[index];
-      books.splice(index, 1);
-      return book;
-    }
+    return getDB()
+      .collection("books")
+      .deleteOne({ _id: new ObjectId(id) });
   }
 };
