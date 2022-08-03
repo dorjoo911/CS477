@@ -1,0 +1,141 @@
+<html lang="en">
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <style>
+    .navBar {
+      display: grid;
+      grid-template-columns: 1fr 2fr 6.5fr 1fr 2fr 1fr;
+      gap: 5px;
+      background: black;
+      margin: 0px;
+      padding: 0px;
+    }
+    .logo {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .item {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .input-group {
+      grid-column: 3;
+      grid-row: 1;
+    }
+    .flag {
+      grid-column: 4;
+      grid-row: 1;
+    }
+    .cart {
+      grid-column: 6;
+      grid-row: 1;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <!-- <div class="p-2 bd-highlight"> -->
+      <div class="logo">
+        <p style="color: white">
+          <img
+            src="https://www.etcentric.org/wp-content/uploads/2016/07/Amazon_Logo_Black_bg.jpg"
+            style="max-width: 100px; object-fit: cover"
+          />
+        </p>
+      </div>
+
+      <div class="item">
+        <p style="color: white">
+          <img style="width: 40px" src="/photo/map.jpeg" alt="map" /> Deliver to
+          Fairfied 52555
+        </p>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="dropdown">
+          <button
+            style="background-color: black; border: black"
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            All
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Amount (to the nearest dollar)"
+        />
+        <span style="background: orange" class="input-group-text">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-search"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+            />
+          </svg>
+        </span>
+      </div>
+
+      <div class="flag dropdown">
+        <button
+          style="background-color: black; border: black"
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <a class="navbar-brand" href="#">
+            <img
+              src="https://hotemoji.com/images/dl/0/american-flag-emoji-by-twitter.png"
+              style="max-width: 30px; object-fit: cover"
+            />
+          </a>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Ethiopia</a></li>
+          <li><a class="dropdown-item" href="#">United States</a></li>
+          <li><a class="dropdown-item" href="#">India</a></li>
+        </ul>
+      </div>
+
+      <div class="cart">
+        <img
+          src="https://tse2.mm.bing.net/th?id=OIP.KDAiQNM3izVq2QWBlpw_CAHaDt&pid=Api&P=0&w=326&h=163"
+          style="
+            width: 50px;
+            flex-direction: row;
+            align-items: flex-end;
+            position: relative;
+            object-fit: cover;
+          "
+        />
+      </div>
+    </div>
+  </body>
+</html>

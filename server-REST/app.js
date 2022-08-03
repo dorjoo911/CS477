@@ -1,11 +1,11 @@
 const express = require("express");
 // const path = require("path");
-
+const connectDB = require("./config/db");
 //Route instantiate
 const bookRoutes = require("./routers/bookRouter");
 
 const app = express();
-
+connectDB();
 //Body parser
 app.use(express.json());
 

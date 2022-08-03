@@ -1,0 +1,200 @@
+body {
+  background-image: linear-gradient(
+    45deg,
+    rgb(171, 216, 218) 0%,
+    #f7faf8 52%,
+    #51c9eb 90%
+  );
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0fr 0.1fr 1fr 1fr 0.1fr;
+  column-gap: 20px;
+
+  grid-template-areas:
+    "navBar navBar navBar navBar navBar navBar"
+    "links links links links links links"
+    "side1 main main main main side2"
+    "side1 cat1 cat2 cat3 cat4 side2"
+    "footer footer footer footer footer footer";
+}
+
+.navBar {
+  grid-area: navBar;
+  background-color: aqua;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+.footer {
+  grid-area: footer;
+  background-color: black;
+  color: white;
+  margin-top: 20px;
+}
+.links {
+  grid-area: links;
+  background-color: rgb(46, 44, 44);
+  position: fixed;
+  top: 70px;
+  width: 100%;
+  z-index: 9;
+}
+/* .links > a:hover {
+  color: blue;
+} */
+.main {
+  grid-area: main;
+  background-color: rgb(206, 133, 133);
+  margin-top: 50px;
+}
+.cat1,
+.cat2,
+.cat3,
+.cat4 {
+  background-color: white;
+  margin-top: 5px;
+  text-align: center;
+}
+.cat1 {
+  grid-area: cat1;
+}
+.cat2 {
+  grid-area: cat2;
+}
+.cat3 {
+  grid-area: cat3;
+}
+.cat4 {
+  grid-area: cat4;
+}
+.card-img-top {
+  width: 90%;
+}
+/* ******** header CSS ********** */
+.navBar {
+  display: grid;
+  grid-template-columns: 1fr 2fr 6.5fr 1fr 2fr 1fr;
+  gap: 5px;
+  background: black;
+  margin: 0px;
+  padding: 0px;
+}
+.logo {
+  grid-column: 1;
+  grid-row: 1;
+}
+.item {
+  grid-column: 2;
+  grid-row: 1;
+}
+.input-group {
+  grid-column: 3;
+  grid-row: 1;
+}
+.flag {
+  grid-column: 4;
+  grid-row: 1;
+}
+.cart {
+  grid-column: 6;
+  grid-row: 1;
+}
+/* ****** FOOTER CSS ******* */
+:root {
+  --black: #000;
+  --white: #fff;
+  --link-color: #fff;
+  --seprator-color: #eceef5;
+  --link-hover-color: #688dff;
+  --input-border-color: #e9ebf3;
+}
+
+.content {
+  box-shadow: 0 100px 107px #05134125;
+  padding: 50px;
+  border-radius: 4px;
+  background-color: rgb(46, 44, 44);
+  /* background-color: #fa8bff; */
+  /* background-image: linear-gradient(
+    45deg,
+    #fa8bff 0%,
+    #2bd2ff 52%,
+    #2bff88 90%
+  ); */
+}
+
+.link-box {
+  text-transform: capitalize;
+}
+.link-box__title {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--link-color);
+  margin-bottom: 10px;
+}
+.link-box__link {
+  font-size: 16px;
+  color: var(--link-color);
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 300ms all ease-in-out;
+}
+.link-box__link:hover {
+  color: var(--link-hover-color);
+}
+.link-box__subscribe-description {
+  font-size: 16px;
+  line-height: 31px;
+}
+
+.privacy-box,
+.social-media-box {
+  color: #84849d;
+  font-size: 14px;
+}
+
+.seprator {
+  background: var(--seprator-color);
+  height: 1px;
+  margin: 50px 0 30px 0;
+}
+
+.input-box {
+  border: 1px solid var(--input-border-color);
+  padding: 4px 10px;
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.input-box svg {
+  margin-top: 3px;
+}
+.input-box input {
+  all: unset;
+  width: 100%;
+  font-size: 16px;
+  margin-left: 5px;
+}
+.input-box input::placeholder {
+  font-size: 16px;
+}
+
+.subscribe-button {
+  margin-top: 20px;
+  color: white;
+  width: 100%;
+  text-align: center;
+  background: blue;
+  padding: 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  font-family: inherit;
+}

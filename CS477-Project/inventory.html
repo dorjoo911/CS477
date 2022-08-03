@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Inventory</title>
+    <link rel="stylesheet" href="./inventory.css" />
+  </head>
+  <body>
+    <script src="./app.js"></script>
+    <div class="box">
+      <div class="inputbox">
+        <h3>Inventory</h3>
+        <p>Item Name:</p>
+        <input
+          name="inputName"
+          type="text"
+          id="name"
+          style="margin-left: 5px"
+        />
+        <p>Item Brand:</p>
+        <input
+          name="inputBrand"
+          type="text"
+          id="brand"
+          style="margin-left: 5px"
+        />
+
+        <p>Item Price</p>
+        <input
+          name="inputPrice"
+          type="text"
+          id="price"
+          style="margin-left: 5px"
+        />
+
+        <p>Quantity</p>
+        <input
+          name="inputQuantity"
+          type="text"
+          id="quantity"
+          style="margin-left: 5px"
+        />
+        <p>Rating</p>
+        <input
+          name="inputRating"
+          type="text"
+          id="rating"
+          style="margin-left: 5px"
+        />
+      </div>
+    </div>
+    <br />
+    <div class="btnGroup">
+      <button name="addBtn" onclick="addRow()">Add</button>
+      <select name="sortList" style="margin-left: 30px; font-size: x-small">
+        <option value="" disabled selected>Sort By...</option>
+        <option>Sort by Name</option>
+        <option>Sort by Price</option>
+      </select>
+      <select name="filterList" style="margin-left: 30px; font-size: x-small">
+        <option value="" disabled selected>Filter By...</option>
+        <option>Quantity greater than 100</option>
+        <option>Rating greater than 4</option>
+      </select>
+      <!-- <button name="clearFilter" >Clear filter</button> -->
+    </div>
+    <br />
+    <!-- table -->
+    <div class="boxtable">
+      <table id="myTable">
+        <tr>
+          <th width="200px">Product name</th>
+          <th width="100px">Brand</th>
+          <th width="90px">Price</th>
+          <th width="90px">Quanrity</th>
+          <th width="90px">Rating</th>
+          <th width="90px">Edit</th>
+          <th width="90px">remove</th>
+        </tr>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <br />
+  </body>
+</html>
