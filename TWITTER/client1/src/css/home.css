@@ -1,0 +1,38 @@
+/* Webpixels CSS */
+/* Utility and component-centric Design System based on Bootstrap for fast, responsive UI development */
+/* URL: https://github.com/webpixels/css */
+
+@import url(https://unpkg.com/@webpixels/css@1.1/dist/index.css);
+.link-muted {
+  color: #aaa;
+}
+.link-muted:hover {
+  color: #1266f1;
+}
+body {
+  background: #eee;
+}
+.date {
+  font-size: 11px;
+}
+.comment-text {
+  font-size: 12px;
+}
+.fs-12 {
+  font-size: 12px;
+}
+.shadow-none {
+  box-shadow: none;
+}
+.name {
+  color: #007bff;
+}
+.cursor:hover {
+  color: blue;
+}
+.cursor {
+  cursor: pointer;
+}
+.textarea {
+  resize: none;
+}
