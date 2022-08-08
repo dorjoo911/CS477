@@ -1,6 +1,6 @@
 window.onload = function () {
   // followers(username)
-  console.log(getUsernameFromToken());
+  // console.log(getUsernameFromToken());
   displayFollowers(getUsernameFromToken());
   document.getElementById("userSearch").onclick = search;
 };
@@ -24,13 +24,13 @@ function getUsernameFromToken() {
 }
 
 async function getAllFollowers(username) {
-  console.log(username);
+  // console.log(username);
   const response = await fetch(`http://localhost:3000/users/`);
   const result = await response.json();
   // console.log(result + " in followers");
   let followersArray = result;
   // let followersArray =  result.following.filter(user => user ==username);
-  console.log(followersArray + " --- in followers");
+  // console.log(followersArray + " --- in followers");
   return followersArray;
 }
 
@@ -38,15 +38,18 @@ async function followers(username) {
   const response = await fetch(`http://localhost:3000/users/${username}`);
   const result = await response.json();
   let followersArray = result.following;
+  // console.log(`here`, followersArray);
   return followersArray;
 }
 
 async function displayFollowers(username) {
-  console.log("---in displayFollowers");
+  // console.log("---in displayFollowers");
   let followersArray = await getAllFollowers(username);
+
   const myFollower = followersArray.filter(
     (user) => user.username === username
   );
+
   let html = "";
   for (let each of followersArray) {
     if (each.username !== username) {
@@ -113,7 +116,7 @@ async function displayFollowers(username) {
 }
 async function unfollow(user) {
   let followersArray = await followers(getUsernameFromToken());
-  console.log(followersArray);
+  // console.log(followersArray);
   let index = followersArray.findIndex((name) => name === user);
   followersArray.splice(index, 1);
 
@@ -130,20 +133,28 @@ async function unfollow(user) {
     }
   );
   const result = await response.json();
-  console.log(result);
+  // console.log(result);
   displayFollowers(getUsernameFromToken());
 }
 
 async function search() {
+  const currentUsername = getUsernameFromToken();
+  const allusersResponse = await fetch(
+    `http://localhost:3000/users/${currentUsername}`
+  );
+  const currUser = await allusersResponse.json();
+  let arr2 = currUser.following;
+  console.log(`adnin .... `, arr2);
   let users = document.getElementById("searchingName").value;
   if (!users) {
     displayFollowers(getUsernameFromToken());
   } else {
     const response = await fetch(`http://localhost:3000/users/${users}`);
     const result = await response.json();
-
+    // console.log(result);
     if (result) {
-      let html = ` <tr>
+      let html = ` 
+      <tr>
        <td>
          <div class="d-flex align-items-center">
            <img
@@ -159,11 +170,24 @@ async function search() {
        </td>
        <td>
          <p class="text-muted mb-0">${result.email}</p>
-       </td>
-  
-       <td>
+       </td>`;
+
+      if (arr2.includes(users)) {
+        html += `<td>
          <button
            id = "unfollowbtn"
+           type="button"
+           onclick= "unfollow('${result.username}')"
+           class="btn btn-link btn-rounded btn-sm fw-bold"
+           data-mdb-ripple-color="dark"
+         >
+           Unfollow
+         </button>
+       </td>`;
+      } else {
+        html += `<td>
+         <button
+           id = "followbtn"
            type="button"
            onclick= "follow('${result.username}')"
            class="btn btn-link btn-rounded btn-sm fw-bold"
@@ -171,14 +195,17 @@ async function search() {
          >
            follow
          </button>
-       </td>
-     </tr>`;
+       </td>`;
+      }
+
+      html += `</tr>`;
 
       document.getElementById("userTable").innerHTML = html;
     } else {
       alert(" user does not exist");
     }
   }
+  document.getElementById("searchingName").value = "";
 }
 
 async function follow(users) {
