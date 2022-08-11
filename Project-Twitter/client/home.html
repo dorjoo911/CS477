@@ -21,13 +21,13 @@
         window.location = "login.html";
       }
     </script>
-    <script src="./js/home.js" type="module"></script>
-    <script src="./js/scroll.js" type="module"></script>
+    <script src="./js/home1.js" type="module"></script>
+    <!-- <script src="./js/scroll.js" type="module"></script> -->
     <title>Home</title>
   </head>
   <body>
     <!-- Banner -->
-
+    <button id="topBtn" title="Go to top">Top</button>
     <a
       href="#"
       id="logout"
@@ -42,39 +42,7 @@
         <div class="col-lg-4 mx-auto">
           <!-- Component -->
           <div class="card shadow">
-            <div class="card-body" id="user-profile">
-              <div class="d-flex justify-content-center">
-                <a href="#" class="avatar avatar-xl rounded-circle">
-                  <img
-                    alt="..."
-                    src="https://images.unsplash.com/photo-1579463148228-138296ac3b98?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
-                  />
-                </a>
-              </div>
-              <div class="text-center my-6">
-                <!-- Title -->
-                <a href="#" class="d-block h5 mb-0">Julienne Moore</a>
-                <!-- Subtitle -->
-                <span class="d-block text-sm text-muted"
-                  >julianne.moore@company.com</span
-                >
-              </div>
-              <!-- Stats -->
-              <div class="d-flex">
-                <div class="col-4 text-center">
-                  <a href="tweets.html" class="h4 font-bolder mb-0">25</a>
-                  <span class="d-block text-sm">Posts</span>
-                </div>
-                <div class="col-4 text-center">
-                  <a href="users.html" class="h4 font-bolder mb-0">350</a>
-                  <span class="d-block text-sm">Following</span>
-                </div>
-                <div class="col-4 text-center">
-                  <a href="users.html" class="h4 font-bolder mb-0">1.5K</a>
-                  <span class="d-block text-sm">Followers</span>
-                </div>
-              </div>
-            </div>
+            <div class="card-body" id="user-profile"></div>
           </div>
         </div>
       </div>
@@ -91,7 +59,9 @@
       <button class="btn btn-outline-primary" type="button" id="postTweet">
         POST
       </button>
-      <button class="btn btn-outline-primary" type="button">Cancel</button>
+      <button class="btn btn-outline-primary" type="button" id="cancebtn">
+        Cancel
+      </button>
     </div>
     <!-- ADD POST-->
     <!-- FOLLOWERS POSTS-->
@@ -101,7 +71,7 @@
           <div class="loader"></div>
           <div class="col-md-12 col-lg-10 col-xl-8 quotes">
             <div class="d-flex justify-content-between align-items-center mb-4">
-              <h4 class="text-dark mb-0">Unread comments (4)</h4>
+              <h4 class="text-dark mb-0">Unread comments (0)</h4>
               <button class="btn btn-outline-primary" id="showUser">
                 <a href="users.html">show users</a>
               </button>

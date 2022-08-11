@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.get("/", tweetController.getAll);
 router.post("/", authToken, tweetController.save);
-router.get("/:id", tweetController.getTweetById);
+// router.get("/:id", tweetController.getTweetById);
+router.get("/:user/:page/:limit", tweetController.getTweetById);
 
 module.exports = router;

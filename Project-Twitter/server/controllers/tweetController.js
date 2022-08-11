@@ -7,14 +7,17 @@ exports.getAll = async (req, res, next) => {
 };
 //actually get tweet by username
 exports.getTweetById = async (req, res, next) => {
-  const userFollow = await Users.find({ username: req.params.id });
+  const userFollow = await Users.find({ username: req.params.user });
   if (userFollow.length !== 0) {
     let follower = userFollow[0].following;
-    follower.push(req.params.id);
+    follower.push(req.params.user);
     const tw = await Tweets.find()
       .where("username")
       .in(follower)
-      .sort({ date: "desc" });
+      .sort({ date: "desc" })
+      .limit(req.params.limit * 1)
+      .skip((req.params.page - 1) * req.params.limit)
+      .exec();
     //console.log(tw);
     res.status(200).json(tw);
   } else {
